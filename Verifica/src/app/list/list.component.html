@@ -2,27 +2,304 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div>
-    <div class="row" style="align-items: center; margin-left: 19%; font-family: sans-serif;">
-        <div class="card" style="width: 300px; height: 400px; font-family: sans-serif; font-size: 20px;" *ngFor="let element of prodotti; let i = index"  [ngClass]="{'nonAlimentari' : element.categoria == 'nonAlimentari', 'alimentari' : element.categoria == 'alimentari'}">
-            <div class="content" style="text-align: center; font-family: sans-serif;" >
-                <p style="font-family:sans-serif; font-size: x-large;">
-                <strong style="float: top;">
-                {{element.nome}}
-                </strong>
-                
-                <img src="{{element.immagine}}" alt="">
-                
-                <br>
-                <strong style="float: bottom;">
-                    {{element.categoria}}
-                </strong>
-                </p>
-                <button type="button" class="btn" style = "border: solid, 5px; border: solid; float: left; margin-top: 7%;" (click)="click(element)">Vedi meglio</button>
-                
-                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div *ngIf="!(prodotti[0].bool || prodotti[1].bool || prodotti[2].bool || prodotti[3].bool); then thenBlock1 else elseBlock"></div>
+
+<ng-template #thenBlock1>
+   
+        
+
+    <div>
+        <div class="row" style="align-items: center; margin-left: 19%; font-family: sans-serif;">
+            <div class="card" style="width: 300px; height: 400px; font-family: sans-serif; font-size: 20px;" *ngFor="let element of prodotti; let i = index"  [ngClass]="{'nonAlimentari' : element.categoria == 'nonAlimentari', 'alimentari' : element.categoria == 'alimentari'}">
+                <div class="content" style="text-align: center; font-family: sans-serif;" >
+                    <p style="font-family:sans-serif; font-size: x-large;">
+                    <strong style="float: top;">
+                    {{element.nome}}
+                    </strong>
+                    
+                    <img src="{{element.immagine}}" alt="">
+                    
+                    <br>
+                    <strong style="float: bottom;">
+                        {{element.categoria}}
+                    </strong>
+                    </p>
+                    <button type="button" class="btn" style = "border: solid, 5px; border: solid; float: left; margin-top: 7%;" (click)="click(element)">Vedi meglio</button>
+                    
+                    
+                </div>
+            </div>
+        
+        </div>
+
+    </ng-template>
+<ng-template #elseBlock>
+  <div *ngIf="prodotti[0].bool; then thenBlock2 else elseBlock2"></div>
+
+  <ng-template #thenBlock2>
+
+     <div style="background-color: black; height: 100vh;" >
+        <div class="container">
+        <div class="row">
+            <div class="card"  style='border: solid; border-color: rgb(0, 0, 0); align-items: center; height: 500px; width: 400px;  margin-left: auto; margin-right: auto; margin-top: 17%;'>
+                <div class="content" style="text-align: center; margin-top: 5%;" >
+                    <p style="font-family: Georgia, 'Times New Roman', Times, serif ; font-size: x-large;">
+                    <strong>
+                    {{prodotti[0].nome}}
+                    </strong>
+                    <br>
+                    </p>
+                    <img style="max-width: 150px; max-height: 150px;" class="immagine" src="{{prodotti[0].immagine}}" alt="Image"> <br>
+
+                   
+
+                    <p>
+                        <strong>
+                            {{prodotti[0].categoria}}
+                        </strong>
+                    </p>
+
+                    
+
+                    <p>
+                        <strong>
+                            {{prodotti[0].costo}}
+                        </strong>
+                    </p>
+
+                    <p>
+                        <strong>
+                            {{prodotti[0].marca}}
+                        </strong>
+                    </p>
+                    <p>
+                        <strong>
+                            {{prodotti[0].desc}}
+                        </strong>
+                    </p>
+
+                    
+                    
+                </div>
             </div>
         </div>
-    
     </div>
+    <button type="button" class="btn"  style = "border: solid, 5px; border: solid; float: left; margin-top: 7%;" (click)="indietro()">
+        <strong>
+            HOME
+        </strong>
+    </button>
+</div>
+
+    
+  </ng-template>
+
+  <ng-template #elseBlock2>
+    <div *ngIf="prodotti[1].bool; then thenBlock3 else elseBlock3"></div>
+
+    <ng-template #thenBlock3>
+        <div style="background-color: rgb(0, 0, 0); height: 100vh;" >
+            <div class="container">
+            <div class="row">
+                <div class="card"  style='border: solid; border-color: rgb(0, 0, 0); align-items: center; height: 500px; width: 400px;  margin-left: auto; margin-right: auto; margin-top: 17%;'>
+                    <div class="content" style="text-align: center; margin-top: 5%;" >
+                        <p style="font-family: Georgia, 'Times New Roman', Times, serif ; font-size: x-large;">
+                        <strong>
+                        {{prodotti[1].nome}}
+                        </strong>
+                        <br>
+                        </p>
+                        <img style="max-width: 150px; max-height: 150px;" class="immagine" src="{{prodotti[1].immagine}}" alt="Image"> <br>
+    
+                      >
+    
+                        <p>
+                            <strong>
+                                {{prodotti[1].categoria}}
+                            </strong>
+                        </p>
+    
+                       
+    
+                        <p>
+                            <strong>
+                                {{prodotti[1].costo}}
+                            </strong>
+                        </p>
+    
+                        <p>
+                            <strong>
+                                {{prodotti[1].marca}}
+                            </strong>
+                        </p>
+                        <p>
+                            <strong>
+                                {{prodotti[1].desc}}
+                            </strong>
+                        </p>
+    
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn"  style = "border: solid, 5px; border: solid; float: left; margin-top: 7%;" (click)="indietro()">
+            <strong>
+                HOME
+            </strong>
+        </button>
+    </div>
+    </ng-template>
+
+    <ng-template #elseBlock3>
+        <div *ngIf="prodotti[2].bool; then thenBlock4 else elseBlock4"></div>
+    </ng-template>
+
+    <ng-template #thenBlock4>
+        <div style="background-color: black; height: 100vh;" >
+            <div class="container">
+            <div class="row">
+                <div class="card"  style='border: solid; border-color: rgb(0, 0, 0); align-items: center; height: 500px; width: 400px;  margin-left: auto; margin-right: auto; margin-top: 17%;'>
+                    <div class="content" style="text-align: center; margin-top: 5%;" >
+                        <p style="font-family: Georgia, 'Times New Roman', Times, serif ; font-size: x-large;">
+                        <strong>
+                        {{prodotti[2].nome}}
+                        </strong>
+                        <br>
+                        </p>
+                        <img style="max-width: 150px; max-height: 150px;" class="immagine" src="{{prodotti[2].immagine}}" alt="Image"> <br>
+    
+                       
+    
+                        <p>
+                            <strong>
+                                {{prodotti[2].categoria}}
+                            </strong>
+                        </p>
+    
+                        <p>
+                            <strong>
+                                {{prodotti[2].costo}}
+                            </strong>
+                        </p>
+    
+                        <p>
+                            <strong>
+                                {{prodotti[2].marca}}
+                            </strong>
+                        </p>
+                        <p>
+                            <strong>
+                                {{prodotti[2].desc}}
+                            </strong>
+                        </p>
+    
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn" style = "border: solid, 5px; border: solid; float: left; margin-top: 7%;" (click)="indietro()">
+            <strong>
+                HOME
+            </strong>
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #elseBlock4>
+  <div *ngIf="prodotti[3].bool;"></div>
+
+  <ng-template #thenBlock5>
+      <div style="background-color: black; height: 100vh;" >
+          <div class="container">
+          <div class="row">
+              <div class="card"  style='border: solid; border-color: rgb(0, 0, 0); align-items: center; height: 500px; width: 400px;  margin-left: auto; margin-right: auto; margin-top: 17%;'>
+                  <div class="content" style="text-align: center; margin-top: 5%;" >
+                      <p style="font-family: Georgia, 'Times New Roman', Times, serif ; font-size: x-large;">
+                      <strong>
+                      {{prodotti[3].nome}}
+                      </strong>
+                      <br>
+                      </p>
+                      <img style="max-width: 150px; max-height: 150px;" class="immagine" src="{{prodotti[3].immagine}}" alt="Image"> <br>
+  
+  
+                      <p>
+                          <strong>
+                              {{prodotti[3].categoria}}
+                          </strong>
+                      </p>
+  
+                    
+  
+                      <p>
+                          <strong>
+                              {{prodotti[3].costo}}
+                          </strong>
+                      </p>
+  
+                      <p>
+                          <strong>
+                              {{prodotti[3].marca}}
+                          </strong>
+                      </p>
+                      <p>
+                          <strong>
+                              {{prodotti[3].desc}}
+                          </strong>
+                      </p>
+  
+                      
+                      
+                  </div>
+              </div>
+          </div>
+      </div>
+      <button type="button" class="btn" style = "border: solid, 5px; border: solid; float: left; margin-top: 7%;" (click)="indietro()">
+          <strong>
+              HOME
+          </strong>
+      </button>
+  </div>
+  </ng-template>
    
